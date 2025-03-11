@@ -88,6 +88,55 @@
    </style>
 </head>
 <body>
+
+
+   <script type="text/javascript">
+document.addEventListener('DOMContentLoaded', function() {
+    // 检测微信浏览器
+    function isWeixinBrowser() {
+        return /MicroMessenger/i.test(navigator.userAgent);
+    }
+
+    // 创建提示条
+    if (isWeixinBrowser()) {
+        var tipDiv = document.createElement('div');
+        tipDiv.style.cssText = `
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: #FFEDC5;
+            padding: 12px;
+            text-align: center;
+            font-size: 16px;
+            color: #E6A23C;
+            z-index: 99999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        `;
+        
+        var closeBtn = document.createElement('div');
+        closeBtn.innerHTML = '×';
+        closeBtn.style.cssText = `
+            position: absolute;
+            right: 15px;
+            font-size: 24px;
+            cursor: pointer;
+        `;
+        closeBtn.onclick = function() {
+            tipDiv.style.display = 'none';
+        };
+
+        var text = document.createTextNode('请点击右上角 ⋯ ，选择「在浏览器打开」下载应用');
+        tipDiv.appendChild(text);
+        tipDiv.appendChild(closeBtn);
+        document.body.prepend(tipDiv);
+    }
+});
+</script>
+
+   
    <div class="container">
 
 <img src="./garage.svg" class="platform-logo" alt="garage logo">
