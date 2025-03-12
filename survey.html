@@ -60,6 +60,57 @@
                 box-shadow: 0 2px 15px rgba(0,0,0,0.1);
             }
         }
+
+
+
+
+               /* 原有样式保持不变以下为滚动条... */
+
+        /* 新增自定义滚动条样式 */
+        ::-webkit-scrollbar {
+            width: 12px;
+            height: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #FF6B6B;
+            border-radius: 10px;
+            border: 3px solid #f1f1f1;
+            transition: all 0.3s ease;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #FF5252;
+            transform: scale(1.05);
+        }
+
+        /* 针对移动端的细滚动条 */
+        @media (max-width: 768px) {
+            ::-webkit-scrollbar {
+                width: 6px;
+                height: 6px;
+            }
+            
+            ::-webkit-scrollbar-thumb {
+                border: 2px solid #f1f1f1;
+            }
+        }
+
+        /* Firefox浏览器支持 */
+        html {
+            scrollbar-width: thin;
+            scrollbar-color: #FF6B6B #f1f1f1;
+        }
+
+
+
+
+        
     </style>
 </head>
 <body>
