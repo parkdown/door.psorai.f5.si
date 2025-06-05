@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>ysxlite</title>
+   
+   <style>
+
+      html {
+           transform: scale(0.8);
+           transform-origin: 0 0;
+           width: 125%; /* 补偿缩放后的宽度 (100%/0.8=125%) */
+           height: 125%; /* 补偿缩放后的高度 */
+           overflow-x: hidden;
+      }
+
+      
+       body {
+           font-family: 'Microsoft YaHei', sans-serif;
+           background: #f5f5f7;
+           margin: 0;
+           padding: 20px;
+       }
+
+       .container {
+           max-width: 600px;
+           margin: 0 auto;
+       }
+
+       h1 {
+           color: #1d1d1f;
+           text-align: center;
+           font-size: 2.4em;
+           margin: 30px 0 20px;
+           letter-spacing: 1px;
+       }
+      h2 {
+           color: #1d1d1f;
+           text-align: center;
+           font-size: 1.5em;
+           margin: 30px 0 20px;
+           letter-spacing: 1px;
+        }
+
+       .download-box {
+           background: white;
+           border-radius: 20px;
+           padding: 25px;
+           box-shadow: 0 8px 30px rgba(0,0,0,0.05);
+       }
+
+       .download-btn {
+           display: flex;
+           align-items: center;
+           background: linear-gradient(145deg, #ffffff, #f8f8f8);
+           color: #1d1d1f;
+           padding: 20px;
+           border-radius: 15px;
+           text-decoration: none;
+           margin: 15px 0;
+           border: 1px solid #e0e0e0;
+           transition: all 0.3s;
+       }
+
+       .platform-logo {
+           width: 40px;
+           height: 40px;
+           margin-right: 20px;
+       }
+
+       .download-text {
+           flex: 1;
+       }
+
+       .download-btn:hover {
+           transform: translateY(-3px);
+           box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+           border-color: #c0c0c0;
+       }
+
+       .platform-name {
+           font-size: 1.2em;
+           font-weight: 500;
+       }
+
+       .file-info {
+           color: #86868b;
+           font-size: 0.9em;
+           margin-top: 5px;
+       }
+
+       .tips {
+           text-align: center;
+           color: #86868b;
+           margin-top: 25px;
+           font-size: 0.95em;
+       }
+   </style>
+</head>
+<body>
+
+
+   <script type="text/javascript">
+document.addEventListener('DOMContentLoaded', function() {
+    // 检测微信浏览器
+    function isWeixinBrowser() {
+        return /MicroMessenger/i.test(navigator.userAgent);
+    }
+
+    // 创建提示条
+    if (isWeixinBrowser()) {
+        var tipDiv = document.createElement('div');
+        tipDiv.style.cssText = `
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: #FFEDC5;
+            padding: 12px;
+            text-align: center;
+            font-size: 16px;
+            color: #E6A23C;
+            z-index: 99999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        `;
+        
+        var closeBtn = document.createElement('div');
+        closeBtn.innerHTML = '×';
+        closeBtn.style.cssText = `
+            position: absolute;
+            right: 15px;
+            font-size: 24px;
+            cursor: pointer;
+        `;
+        closeBtn.onclick = function() {
+            tipDiv.style.display = 'none';
+        };
+
+        var text = document.createTextNode('请点击右上角 ⋯ ，选择「在浏览器打开」下载');
+        tipDiv.appendChild(text);
+        tipDiv.appendChild(closeBtn);
+        document.body.prepend(tipDiv);
+    }
+});
+</script>
+
+   
+   <div class="container">
+      
+    <br>
+    <br>
+
+      
+    <img src="./garage.svg" class="platform-logo" alt="garage logo">
+
+       <h2>ysxlite</h2>
+
+
+       <div class="download-box">
+
+         <a href="http://ltpan.psorai.f5.si:9988/ysxlite.apk" class="download-btn">
+               <img src="./android.svg"
+                    class="platform-logo"
+                    alt="Android Logo">
+               <div class="download-text">
+                   <div class="platform-name">Android 客户端</div>
+                   <div class="file-info">版本 2.3.9 · APK文件</div>
+               </div>
+           </a>
+
+
+          <a href="https://apps.apple.com/cn/app/ysxlite/id6443560379" class="download-btn">
+               <img src="./ios.svg"
+                    class="platform-logo"
+                    alt="Apple Logo">
+               <div class="download-text">
+                   <div class="platform-name">iOS 客户端</div>
+                   <div class="file-info">版本 1.1.5 · IPA文件</div>
+               </div>
+           </a>
+          
+
+
+
+          
+       </div>
+
+       <p class="tips">请根据您的设备系统选择对应版本下载</p>
+       <p class="tips">部分品牌如华为请关闭纯净模式再安装<a href="https://baijiahao.baidu.com/s?id=1802523941608737439" style="color: blue;">教程</a></p>
+       <p class="tips">📱如需帮助请联系微信rapidmsf</p>
+   </div>
+</body>
+</html>
