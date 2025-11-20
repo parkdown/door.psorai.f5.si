@@ -144,6 +144,32 @@ document.addEventListener('DOMContentLoaded', function() {
         tipDiv.appendChild(closeBtn);
         document.body.prepend(tipDiv);
     }
+
+    // 手机类型选择逻辑
+    var iosBtn = document.getElementById('ios-btn');
+    var androidBtn = document.getElementById('android-btn');
+    var phoneSelector = document.getElementById('phone-selector');
+    var iosDownloads = document.getElementById('ios-downloads');
+    var androidDownloads = document.getElementById('android-downloads');
+
+    iosBtn.addEventListener('click', function() {
+        phoneSelector.style.display = 'none';
+        iosDownloads.style.display = 'block';
+    });
+
+    androidBtn.addEventListener('click', function() {
+        phoneSelector.style.display = 'none';
+        androidDownloads.style.display = 'block';
+    });
+
+    // 返回上级菜单功能
+    document.addEventListener('click', function(e) {
+        if (e.target.id === 'back-to-selector' || e.target.closest('#back-to-selector')) {
+            iosDownloads.style.display = 'none';
+            androidDownloads.style.display = 'none';
+            phoneSelector.style.display = 'block';
+        }
+    });
 });
 </script>
 
@@ -160,8 +186,69 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
        <div class="download-box">
+         <!-- 手机类型选择界面 -->
+         <div id="phone-selector" style="text-align: center; margin-bottom: 20px;">
+           <h3 style="margin-bottom: 20px;">请选择您的手机类型</h3>
+           <button id="ios-btn" style="background: linear-gradient(145deg, #ffffff, #f8f8f8); color: #1d1d1f; padding: 15px 30px; border-radius: 15px; text-decoration: none; margin: 10px; border: 1px solid #e0e0e0; transition: all 0.3s; font-size: 1.1em;">
+             <img src="./ios.svg" class="platform-logo" alt="Apple Logo" style="width: 30px; height: 30px; vertical-align: middle; margin-right: 10px;">
+             苹果手机
+           </button>
+           <button id="android-btn" style="background: linear-gradient(145deg, #ffffff, #f8f8f8); color: #1d1d1f; padding: 15px 30px; border-radius: 15px; text-decoration: none; margin: 10px; border: 1px solid #e0e0e0; transition: all 0.3s; font-size: 1.1em;">
+             <img src="./android.svg" class="platform-logo" alt="Android Logo" style="width: 30px; height: 30px; vertical-align: middle; margin-right: 10px;">
+             安卓手机
+           </button>
+         </div>
 
-         <a href="./HYDoor.apk" class="download-btn">
+         <!-- iOS下载选项，默认隐藏 -->
+         <div id="ios-downloads" style="display: none;">
+           <a href="https://apps.apple.com/nz/app/key-door/id1481830717" class="download-btn">
+               <img src="./ios.svg"
+                    class="platform-logo"
+                    alt="Apple Logo">
+               <div class="download-text">
+                   <div class="platform-name">iOS 客户端（IOS26及以上）</div>
+                   <div class="file-info">版本 1.1.5 · IPA文件</div>
+               </div>
+           </a>
+           
+           <a href="https://apps.apple.com/cn/app/door-remote/id1538698695" class="download-btn">
+               <img src="./ios.svg"
+                    class="platform-logo"
+                    alt="Apple Logo">
+               <div class="download-text">
+                   <div class="platform-name">iOS 客户端（IOS18及以下）</div>
+                   <div class="file-info">版本 1.0.5 · IPA文件</div>
+               </div>
+            </a>
+
+            <a href="https://apps.apple.com/cn/app/%E6%AD%A3%E8%83%BD/id6478856653" class="download-btn">
+               <img src="./ios.svg"
+                    class="platform-logo"
+                    alt="Apple Logo">
+               <div class="download-text">
+                   <div class="platform-name">iOS 客户端（8门版）</div>
+                   <div class="file-info">版本 1.0.1 · IPA文件</div>
+               </div>
+            </a>
+
+            <a href="https://apps.apple.com/cn/app/wintec-door/id1538431142" class="download-btn">
+                <img src="./ios.svg"
+                     class="platform-logo"
+                     alt="Apple Logo">
+                <div class="download-text">
+                    <div class="platform-name">iOS 客户端(wintec)</div>
+                    <div class="file-info">版本 1.1.1 · IPA文件</div>
+                </div>
+             </a>
+
+             <button id="back-to-selector" class="download-btn" style="cursor: pointer; text-align: center; justify-content: center; background: linear-gradient(145deg, #f5f5f5, #e0e0e0);">
+               <div style="color: #666; font-size: 1.1em;">返回上级菜单</div>
+             </button>
+          </div>
+
+         <!-- Android下载选项，默认隐藏 -->
+         <div id="android-downloads" style="display: none;">
+           <a href="./HYDoor.apk" class="download-btn">
                <img src="./android.svg"
                     class="platform-logo"
                     alt="Android Logo">
@@ -170,7 +257,7 @@ document.addEventListener('DOMContentLoaded', function() {
                    <div class="file-info">版本 2.3.9 · APK文件</div>
                </div>
            </a>
-		 <a href="./smartdoor1.apk" class="download-btn">
+		   <a href="./smartdoor1.apk" class="download-btn">
                <img src="./android.svg"
                     class="platform-logo"
                     alt="Android Logo">
@@ -180,28 +267,30 @@ document.addEventListener('DOMContentLoaded', function() {
                </div>
            </a>
 
-          <a href="https://apps.apple.com/nz/app/key-door/id1481830717" class="download-btn">
-               <img src="./ios.svg"
+           <a href="./smartdoor1.apk" class="download-btn">
+               <img src="./android.svg"
                     class="platform-logo"
-                    alt="Apple Logo">
+                    alt="Android Logo">
                <div class="download-text">
-                   <div class="platform-name">iOS 客户端（鎏韵金）</div>
-                   <div class="file-info">版本 1.1.5 · IPA文件</div>
+                   <div class="platform-name">Android 客户端选项3</div>
+                   <div class="file-info">版本 1.1.1 · APK文件</div>
                </div>
            </a>
-          
-           <a href="https://apps.apple.com/cn/app/door-remote/id1538698695" class="download-btn">
-               <img src="./ios.svg"
-                    class="platform-logo"
-                    alt="Apple Logo">
-               <div class="download-text">
-                   <div class="platform-name">iOS 客户端（曜石黑）</div>
-                   <div class="file-info">版本 1.0.5 · IPA文件</div>
-               </div>
+
+           <a href="./smartdoor1.apk" class="download-btn">
+                <img src="./android.svg"
+                     class="platform-logo"
+                     alt="Android Logo">
+                <div class="download-text">
+                    <div class="platform-name">Android 客户端选项4</div>
+                    <div class="file-info">版本 1.1.1 · APK文件</div>
+                </div>
             </a>
 
-
-          
+            <button id="back-to-selector" class="download-btn" style="cursor: pointer; text-align: center; justify-content: center; background: linear-gradient(145deg, #f5f5f5, #e0e0e0);">
+              <div style="color: #666; font-size: 1.1em;">返回上级菜单</div>
+            </button>
+          </div>
        </div>
 
        <p class="tips">请根据您的设备系统选择对应版本下载</p>
